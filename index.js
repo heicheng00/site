@@ -10,6 +10,7 @@ app.listen(app.get('port'), function () {
     console.log('Express started on http://localhost:'+ app.get('port')+ ';press Ctrl-C to terminate.');
 })
 
+
 //设置handlebar 模板引擎
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 app.engine('handlebars', handlebars.engine);
@@ -19,7 +20,8 @@ app.set('view engine', 'handlebars');
 // static 中间件可以将一个或多个目 录指派为包含静态资源的目录
 app.use(express.static(__dirname + '/public'));
 
-
+// 引入外部文件  必须加./ 否则到node_module中找  会出错
+var fortune = require('./lib/fortune.js');
 
 //路由
 app.get('/', function (req, res) {
@@ -33,9 +35,9 @@ app.get('/', function (req, res) {
 app.get('/about', function (req, res) {
     //res.type('text/plain');
     //res.send('about page');
-   var rand = fortunes[Math.floor(Math.random() * fortunes.length)];
+
     //发送随机内容
-    res.render('about', {fortune:rand});
+    res.render('about', {fortune:fortune.getFortune()});
 })
 
 
@@ -59,10 +61,3 @@ app.use(function (err, req, res, next) {
 });
 
 
-var fortunes = [
-    " Conquer your fears or they will conquer you. " ,
-    " Rivers need springs. " ,
-    " Do not fear what you don' t know. " ,
-    " You will have a pleasant surprise. " ,
-    " Whenever possible, keep it simple. "
-]
