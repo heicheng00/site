@@ -1,0 +1,30 @@
+{
+  "name": "travel-site",
+  "version": "1.0.0",
+  "description": "node travel site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heicheng00/site.git"
+  },
+  "keywords": [
+    "travel",
+    "site"
+  ],
+  "author": "wangdezhang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heicheng00/site/issues"
+  },
+  "homepage": "https://github.com/heicheng00/site#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "express-handlebars": "^3.0.0"
+
+  }
+}
